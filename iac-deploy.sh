@@ -57,19 +57,19 @@ function aws_wait_create_stack() {
 }
 
 function aws_create_stack_IAM() {
-  aws_create_stack $IAM_STACK "file://./IamCft.yml" "--capabilities CAPABILITY_NAMED_IAM"
+  aws_create_stack $IAM_STACK "file://./deploy-iam.yml" "--capabilities CAPABILITY_NAMED_IAM"
 }
 
 function aws_create_stack_VPC() {
-  aws_create_stack $VPC_STACK "file://./VpcCft.yml"
+  aws_create_stack $VPC_STACK "file://./deploy-vpc.yml"
 }
 
 function aws_create_stack_Bastion() {
-  aws_create_stack $BASTION_STACK "file://./BastionCft.yml" "--parameters ParameterKey=IamStackName,ParameterValue=$IAM_STACK ParameterKey=VpcStackName,ParameterValue=$VPC_STACK"
+  aws_create_stack $BASTION_STACK "file://./deploy-bastion.yml" "--parameters ParameterKey=IamStackName,ParameterValue=$IAM_STACK ParameterKey=VpcStackName,ParameterValue=$VPC_STACK"
 }
 
 function aws_create_stack_EKS() {
-  aws_create_stack $EKS_STACK "file://./Eks1ClusterCft.yml" "--parameters ParameterKey=IamStackName,ParameterValue=$IAM_STACK ParameterKey=VpcStackName,ParameterValue=$VPC_STACK"
+  aws_create_stack $EKS_STACK "file://./deploy-cluster.yml" "--parameters ParameterKey=IamStackName,ParameterValue=$IAM_STACK ParameterKey=VpcStackName,ParameterValue=$VPC_STACK"
 }
 
 ##################################### End Function Definitions
