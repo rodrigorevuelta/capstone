@@ -2,23 +2,23 @@
   "kind": "Deployment",
   "apiVersion": "extensions/v1beta1",
   "metadata": {
-    "namespace":"musicstore",
-    "name": "musicstore-website-canary"
+    "namespace":"stockprice",
+    "name": "srv-ml-stockprice"
   },
   "spec": {
-    "replicas": 1,
+    "replicas": 3,
     "template":{
         "metadata": {           
            "labels": {
-               "app": "musicstore-website",
-	       "track": "canary"
+               "app": "srv-ml-stockprice",
+	       "track": "stable"
             }
          },
         "spec":{
            "containers": [
      	     {
-        	"name": "frontend",
-	        "image": "musicstore:v2",
+        	"name": "srv-ml-stockprice",
+	        "image": "660273858494.dkr.ecr.eu-central-1.amazonaws.com/srv-ml-stockprice:v1",
         	"ports": [
           	    {
             		"containerPort": 80

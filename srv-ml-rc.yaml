@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: srv-ml-stockprice
+  namespace: stockprice
+  labels:
+    name: svr-ml-stockprice
+spec:
+  replicas: 1
+  selector:
+    name: srv-ml-stockprice
+  template:
+    metadata:
+      labels:
+        name: srv-ml-stockprice
+    spec:
+      containers:
+        - name: srv-ml-stockprice
+          image: 660273858494.dkr.ecr.eu-central-1.amazonaws.com/srv-ml-stockprice:v1
+          ports:
+            - name: srv-ml-stockprice
+              containerPort: 9000

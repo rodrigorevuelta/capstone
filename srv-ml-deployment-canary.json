@@ -3,22 +3,22 @@
   "apiVersion": "extensions/v1beta1",
   "metadata": {
     "namespace":"stockprice",
-    "name": "srv-ml-stockprice"
+    "name": "srv-ml-stockprice-canary"
   },
   "spec": {
-    "replicas": 2,
+    "replicas": 1,
     "template":{
         "metadata": {           
            "labels": {
                "app": "srv-ml-stockprice",
-	       "track": "stable"
+	       "track": "canary"
             }
          },
         "spec":{
            "containers": [
      	     {
         	"name": "srv-ml-stockprice",
-	        "image": "660273858494.dkr.ecr.eu-central-1.amazonaws.com/srv-ml-stockprice:v1",
+	        "image": "660273858494.dkr.ecr.eu-central-1.amazonaws.com/srv-ml-stockprice:v2",
         	"ports": [
           	    {
             		"containerPort": 80
